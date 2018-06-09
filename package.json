@@ -1,0 +1,22 @@
+{
+  "name": "nodeliad",
+  "version": "0.0.1",
+  "description": "Bot Telegram per monitorare i consumi della propria linea Iliad",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Domenico Majorana",
+  "homepage": "https://github.com/Nicuz/Nodeliad",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nicuz/Nodeliad.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.87.0",
+    "striptags": "^3.1.1",
+    "telegraf": "^3.21.2"
+  }
+}

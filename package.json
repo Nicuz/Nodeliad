@@ -1,6 +1,6 @@
 {
   "name": "nodeliad",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bot Telegram per monitorare i consumi della propria linea Iliad",
   "main": "bot.js",
   "scripts": {
@@ -15,8 +15,8 @@
   },
   "license": "MIT",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "request": "^2.87.0",
-    "striptags": "^3.1.1",
     "telegraf": "^3.21.2"
   }
 }

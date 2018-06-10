@@ -1,5 +1,5 @@
 var request = require('request');
-var striptags = require('striptags');
+const cheerio = require('cheerio');
 var config = require('./config.json');
 
 var area_riservata = {
@@ -13,39 +13,42 @@ var area_riservata = {
     }
 }
 
-//Testo da rimuovere per avere solo il consumo effettivo di chiamate, SMS ed MMS
-var labels = ["Chiamate: ", " SMS", " MMS"]
-var patterns = [/Chiamate: <span class="red">(.*)<\/span><br>/g, /<span class="red">(\d+) SMS<\/span>/g, /<span class="red">(\d+) MMS<br><\/span>/g, /<span class="red">(.*)<\/span> \/ (.*)<br>/g]
-
-var info = [], italia = [], estero = []
+var iliad = {};
+var voci_consumi_ita = ['chiamate_effettuate_minuti', 'chiamate_costi_extra', 'sms_inviati', 'sms_costi_extra', 'dati_utilizzati', 'dati_costi_extra', 'mms_inviati', 'mms_costi_extra']
+var voci_consumi_estero = ['chiamate_effettuate_minuti', 'chiamate_costi_extra', 'sms_inviati', 'sms_costi_extra', 'dati_utilizzati', 'dati_costi_extra', 'dati_utilizzati_extra', 'mms_inviati', 'mms_costi_extra']
 
 exports.info_linea = function(html){
-  //Nome e cognome
-  info.push(html.match(/<div class="bold">(.*)<\/div>/i)[1]);
-  //ID utente
-  info.push(html.match(/ID utente: (\d+.\d+)/i)[1]);
-  //Numero associato alla SIM Iliad
-  info.push(html.match(/Numero: (\d+.\d+)/i)[1]);
-  //Credito residuo
-  info.push(html.match(/- Credito : <b class="red">(\d.+.(.|,)?)<\/b>/i)[1]);
-  return info;
+  const $ = cheerio.load(html);
+
+  iliad = {
+    'info': {
+      'intestatario': $('.current-user .bold').first().text(),
+      'id': $('.current-user .smaller').slice(1).first().text().replace('ID utente: ', ''),
+      'numero': $('.current-user .smaller').slice(1).last().text().replace('Numero: ', ''),
+      'credito': $('.p-conso h2 .red').text()
+    }
+  }
+  return iliad.info;
 }
 
-// 0 = chiamate, 1 = SMS, 2 = MMS, 3 = traffico dati
 exports.consumi_italia = function(html){
-  for (var i=0; i<=2; i++){
-    italia.push(striptags(html.match(patterns[i])[0]).replace(labels[i],''));
-  }
-  italia.push(striptags(html.match(patterns[3])[0]));
-  return italia;
+  const $ = cheerio.load(html);
+  iliad.italia = {}
+
+  $('.conso-local .conso__text .red').each(function(i, elem) {
+    iliad['italia'][voci_consumi_ita[i]] = $(this).text().replace(' SMS', '').replace(' MMS', '');
+  });
+  return iliad.italia;
 }
 
 exports.consumi_estero = function(html){
-  for (var i=0; i<=2; i++){
-    estero.push(striptags(html.match(patterns[i])[1]).replace(labels[i],''));
-  }
-  estero.push(striptags(html.match(patterns[3])[1]));
-  return estero;
+  const $ = cheerio.load(html);
+  iliad.estero = {}
+
+  $('.conso-roaming .conso__text .red').each(function(i, elem) {
+    iliad['estero'][voci_consumi_estero[i]] = $(this).text().replace(' SMS', '').replace(' MMS', '');
+  });
+  return iliad.estero;
 }
 
 exports.login = function(callback) {
@@ -55,7 +58,7 @@ exports.login = function(callback) {
       callback("Errore durante il login. ID utente o password non corretto.");
     } else {
       //Login effettuato, restituisco il sorgente della pagina
-      callback(body);
+      callback(body.replace(/<\/span> \//g, ' /').replace(/GB<br>/g, 'GB</span>'));
     }
   });
 }

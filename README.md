@@ -47,16 +47,16 @@ Se tutto è stato configurato correttamente, lanciando il comando ```sudo system
 ### Changelog
 
 #### ```[0.0.2] - 11/06/2018```
-* ##### Aggiunto
- * [cheerio](https://github.com/cheeriojs/cheerio)
- * comandi ```/costiextra``` e ```/costiextraestero```
+##### Aggiunto
+* [cheerio](https://github.com/cheeriojs/cheerio)
+* comandi ```/costiextra``` e ```/costiextraestero```
 
-* ##### Rimosso
- * striptags
+##### Rimosso
+* striptags
 
-* ##### Cambiato
- * Ricerca dei tag tramite cheerio, regex rimosse
- * Salvataggio dati in un oggetto e non più in array
+##### Cambiato
+* Ricerca dei tag tramite cheerio, regex rimosse
+* Salvataggio dati in un oggetto e non più in array
 
 #### ```[0.0.1] - 09/06/2018```
- * Release iniziale
+* Release iniziale

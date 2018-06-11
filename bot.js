@@ -22,14 +22,14 @@ bot.on('text', (ctx) => {
       case '/start':
         nodeliad.login(function(html){
           intestatario = nodeliad.info_linea(html).intestatario;
-          ctx.replyWithMarkdown("Ciao *"+intestatario+"*, hai effettuato con successo il login al sito di Iliad! 😄\n\nCon questo bot potrai controllare tutti i consumi relativi alla tua tariffa, ecco la lista dei comandi disponibili:\n💰 /credito per conoscere il credito residuo\n🇮🇹 /consumi per conoscere i consumi effettuati in Italia\n🌎 /consumiestero per conoscere i consumi effettuati all'estero\n💶 /costiextra per controllare i costi extra in Italia\n💵 /costiextraestero per controllare consumi e costi extra all'estero");
+          ctx.replyWithMarkdown(`Ciao *${intestatario}*, hai effettuato con successo il login al sito di Iliad! 😄\n\nCon questo bot potrai controllare tutti i consumi relativi alla tua tariffa, ecco la lista dei comandi disponibili:\n💰 /credito per conoscere il credito residuo\n🇮🇹 /consumi per conoscere i consumi effettuati in Italia\n🌎 /consumiestero per conoscere i consumi effettuati all'estero\n💶 /costiextra per controllare i costi extra in Italia\n💵 /costiextraestero per controllare consumi e costi extra all'estero`);
         })
         break
 
       case '/credito':
         nodeliad.login(function(html){
           credito = nodeliad.info_linea(html).credito;
-          ctx.replyWithMarkdown("Hai un credito residuo di *"+credito+"*");
+          ctx.replyWithMarkdown(`Hai un credito residuo di ${credito}`);
         })
         break
 
@@ -39,7 +39,7 @@ bot.on('text', (ctx) => {
           sms = nodeliad.consumi_italia(html).sms_inviati;
           mms = nodeliad.consumi_italia(html).mms_inviati;
           dati = nodeliad.consumi_italia(html).dati_utilizzati;
-          ctx.replyWithMarkdown("📞 *"+minuti+"*\n💬 *"+sms+"* SMS\n✉️ *"+mms+"* MMS\n📶 *"+dati+"*")
+          ctx.replyWithMarkdown(`📞 *${minuti}*\n💬 *${sms}* SMS\n✉️ *${mms}* MMS\n📶 *${dati}*`)
         })
         break
 
@@ -49,7 +49,7 @@ bot.on('text', (ctx) => {
           sms = nodeliad.consumi_estero(html).sms_inviati;
           mms = nodeliad.consumi_estero(html).mms_inviati;
           dati = nodeliad.consumi_estero(html).dati_utilizzati;
-          ctx.replyWithMarkdown("📞 *"+minuti+"*\n💬 *"+sms+"* SMS\n✉️ *"+mms+"* MMS\n📶 *"+dati+"*")
+          ctx.replyWithMarkdown(`📞 *${minuti}*\n💬 *${sms}* SMS\n✉️ *${mms}* MMS\n📶 *${dati}*`)
         })
         break
 
@@ -59,7 +59,7 @@ bot.on('text', (ctx) => {
           sms = nodeliad.consumi_italia(html).sms_costi_extra;
           mms = nodeliad.consumi_italia(html).mms_costi_extra;
           dati = nodeliad.consumi_italia(html).dati_costi_extra;
-          ctx.replyWithMarkdown("📞 *"+minuti+"*\n💬 *"+sms+"* (SMS)\n✉️ *"+mms+"* (MMS)\n📶 *"+dati+"*")
+          ctx.replyWithMarkdown(`📞 *${minuti}*\n💬 *${sms}* (SMS)\n✉️ *${mms}* (MMS)\n📶 *${dati}*`)
         })
         break
 
@@ -70,7 +70,7 @@ bot.on('text', (ctx) => {
           mms = nodeliad.consumi_estero(html).mms_costi_extra;
           dati = nodeliad.consumi_estero(html).dati_costi_extra;
           dati_extra = nodeliad.consumi_estero(html).dati_utilizzati_extra;
-          ctx.replyWithMarkdown("📞 *"+minuti+"*\n💬 *"+sms+"* (SMS)\n✉️ *"+mms+"* (MMS)\n📶 *"+dati+"*\n📶 *"+dati_extra+"*")
+          ctx.replyWithMarkdown(`📞 *${minuti}*\n💬 *${sms}* (SMS)\n✉️ *${mms}* (MMS)\n📶 *${dati}*\n📶 *${dati_extra}*`)
         })
         break
 

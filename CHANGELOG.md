@@ -1,5 +1,12 @@
 <h1 align="center">Changelog 📖</h1>
 
+## [0.0.3] - 03/07/2018
+### Aggiunto
+* possibilità di controllare la data di rinnovo dell'offerta
+
+### Cambiato
+* il comando ```/credito``` ora è ```/info```
+
 ## [0.0.2] - 11/06/2018
 ### Aggiunto
 * [cheerio](https://github.com/cheeriojs/cheerio)

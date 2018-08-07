@@ -25,7 +25,8 @@ exports.InfoLinea = function(html){
       "intestatario": $('.current-user .bold').first().text(),
       "id": $('.current-user .smaller').slice(1).first().text().replace('ID utente: ', ''),
       "numero": $('.current-user .smaller').slice(1).last().text().replace('Numero: ', ''),
-      "credito": $('.p-conso h2 .red').text()
+      "credito": $('.p-conso h2 .red').text(),
+      "rinnovo": $('.p-conso .end_offerta').text().replace(/\s\s+/g, '')
     }
   }
   return iliad.info;

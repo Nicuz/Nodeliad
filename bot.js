@@ -4,7 +4,7 @@ const config = require('./config.json');
 
 const BOT = new Telegraf(config.telegram.token);
 
-var intestatario, credito, chiamate, sms, mms, dati, datiExtra;
+var intestatario, credito, rinnovo, chiamate, sms, mms, dati, datiExtra;
 
 nodeliad.Login(function(html){
   if (html == "Errore durante il login. ID utente o password non corretto.") {
@@ -26,10 +26,11 @@ BOT.on('text', (ctx) => {
         });
         break
 
-      case '/credito':
+      case '/info':
         nodeliad.Login(function(html){
           credito = nodeliad.InfoLinea(html).credito;
-          ctx.replyWithMarkdown(`Hai un credito residuo di ${credito}`);
+          rinnovo = nodeliad.InfoLinea(html).rinnovo;
+          ctx.replyWithMarkdown(`Hai un credito residuo di ${credito}\n\n${rinnovo}`);
         });
         break
 

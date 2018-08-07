@@ -1,6 +1,6 @@
 {
   "name": "nodeliad",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bot Telegram per monitorare i consumi della propria linea Iliad",
   "main": "bot.js",
   "scripts": {

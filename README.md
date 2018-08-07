@@ -11,10 +11,18 @@ Il progetto è nato per via della mancanza di un'app ufficiale per iOS che costr
 
 ## Features
 * 💰 controllo del credito residuo
+* ⏰ controllo della data di rinnovo
 * 🇮🇹 controllo dei consumi effettuati in Italia
 * 🌎 controllo dei consumi effettuati all'estero
 * 💶 controllo costi extra in Italia
 * 💵 controllo consumi e costi extra all'estero
+
+## Lista dei comandi
+* ```/info```
+* ```/consumi```
+* ```/consumiestero```
+* ```/costiextra```
+* ```/costiextraestero```
 
 ## Installazione
 1. Clonare il repository con ```git clone https://github.com/Nicuz/Nodeliad.git``` oppure cliccando sul bottone in alto a destra ```Clone or Download```

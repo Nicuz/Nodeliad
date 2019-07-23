@@ -22,7 +22,7 @@ BOT.on('text', (ctx) => {
       case '/start':
         nodeliad.Login(function(html){
           intestatario = nodeliad.InfoLinea(html).intestatario;
-          ctx.replyWithMarkdown(`Ciao *${intestatario}*, hai effettuato con successo il login al sito di Iliad! 😄\n\nCon questo bot potrai controllare tutti i consumi relativi alla tua tariffa, ecco la lista dei comandi disponibili:\n💰 /credito per conoscere il credito residuo\n🇮🇹 /consumi per conoscere i consumi effettuati in Italia\n🌎 /consumiestero per conoscere i consumi effettuati all'estero\n💶 /costiextra per controllare i costi extra in Italia\n💵 /costiextraestero per controllare consumi e costi extra all'estero`);
+          ctx.replyWithMarkdown(`Ciao *${intestatario}*, hai effettuato con successo il login al sito di Iliad! 😄\n\nCon questo bot potrai controllare tutti i consumi relativi alla tua tariffa, ecco la lista dei comandi disponibili:\n💰 /info per conoscere il credito residuo\n🇮🇹 /consumi per conoscere i consumi effettuati in Italia\n🌎 /consumiestero per conoscere i consumi effettuati all'estero\n💶 /costiextra per controllare i costi extra in Italia\n💵 /costiextraestero per controllare consumi e costi extra all'estero`);
         });
         break
 

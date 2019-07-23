@@ -1,6 +1,6 @@
 const Telegraf = require('telegraf')
 const nodeliad = require('./nodeliad')
-const config = require('./config.json');
+const config = process.env.TG_TOKEN || require('./config.json');
 
 const BOT = new Telegraf(process.env.TG_TOKEN || config.telegram.token);
 

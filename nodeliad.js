@@ -1,6 +1,6 @@
 const request = require('request');
 const cheerio = require('cheerio');
-const config = require('./config.json');
+const config = process.env.ILIAD_USER || require('./config.json');
 
 var areaRiservata = {
     url: "https://www.iliad.it/account/",

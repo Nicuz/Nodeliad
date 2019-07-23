@@ -2,7 +2,7 @@ const Telegraf = require('telegraf')
 const nodeliad = require('./nodeliad')
 const config = require('./config.json');
 
-const BOT = new Telegraf(config.telegram.token);
+const BOT = new Telegraf(process.env.TG_TOKEN || config.telegram.token);
 
 var intestatario, credito, rinnovo, chiamate, sms, mms, dati, datiExtra;
 
@@ -16,7 +16,7 @@ nodeliad.Login(function(html){
 });
 
 BOT.on('text', (ctx) => {
-  if (config.telegram.username === ctx.message.from.username) {
+  if (process.env.TG_USERNAME || config.telegram.username === ctx.message.from.username) {
     switch (ctx.message.text) {
 
       case '/start':

@@ -25,6 +25,13 @@ Il progetto è nato per via della mancanza di un'app ufficiale per iOS che costr
 * ```/costiextraestero```
 
 ## Installazione
+Con solo una linea nel terminale:
+```
+docker run -it -e "TG_TOKEN=your_token" -e "TG_USERNAME=your_telegram_username" -e "ILIAD_USER=your_iliad_usr" -e "ILIAD_PASS=your_iliad_password" --name iliad-bot albertoxamin/nodeliad:latest
+```
+
+Altrimenti
+
 1. Clonare il repository con ```git clone https://github.com/Nicuz/Nodeliad.git``` oppure cliccando sul bottone in alto a destra ```Clone or Download```
 2. Entrare nella directory di Nodeliad
 3. Installare le dipendenze con ```npm install```

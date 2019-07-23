@@ -29,6 +29,7 @@ Il progetto è nato per via della mancanza di un'app ufficiale per iOS che costr
 2. Entrare nella directory di Nodeliad
 3. Installare le dipendenze con ```npm install```
 4. Rinominare il file ```config.json.template``` in ```config.json```e modificarlo inserendo i propri dati di accesso al sito di Iliad, il token del vostro bot fornito da [BotFather](https://telegram.me/BotFather) e il vostro nickname di Telegram senza la @ iniziale. Il nickname viene utilizzato per fare un controllo sull'utente che invia un comando, il bot fornirà i dettagli sulla linea solo all'utente col nickname specificato.
+Oppure impostare nel env le seguenti variabili: `TG_TOKEN` `TG_USERNAME` `ILIAD_USER` `ILIAD_PASS`
 5. Avviare il bot con ```node bot.js```
 
 ## Aggiornare il bot
@@ -42,7 +43,7 @@ Terminato l'aggiornamento vi basterà riavviare il bot.
 Se volete gestire il bot tramite [PM2](https://github.com/Unitech/pm2), dopo aver creato il file `config.json` eseguite il comando ```pm2 start pm2-ecosystem.config.js```
 
 ## Docker container
-Se volete usare Docker, dopo aver clonato il repository e modificato il `config.json` effettuate una docker build:
+Se volete usare Docker, dopo aver clonato il repository e modificato il `config.json` (o settato le variabili d'ambiente) effettuate una docker build:
 
 ```docker build . -t nodeliad```
 

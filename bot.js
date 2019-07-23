@@ -79,7 +79,7 @@ BOT.on('text', (ctx) => {
         ctx.reply('Comando non riconosciuto');
     }
   } else {
-    ctx.reply('E tu chi cazzo sei? Non sei autorizzato ad eseguire comandi.');
+    ctx.reply('Utente non autorizzato ad eseguire comandi.\nCrea il tuo bot iliad con https://github.com/albertoxamin/Nodeliad');
   }
 });
 

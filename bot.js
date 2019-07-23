@@ -16,7 +16,7 @@ nodeliad.Login(function(html){
 });
 
 BOT.on('text', (ctx) => {
-  if (process.env.TG_USERNAME || config.telegram.username === ctx.message.from.username) {
+  if (process.env.TG_USERNAME === ctx.message.from.username || config.telegram.username === ctx.message.from.username) {
     switch (ctx.message.text) {
 
       case '/start':

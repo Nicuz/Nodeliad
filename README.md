@@ -44,7 +44,7 @@ Terminato l'aggiornamento vi basterà riavviare il bot.
 Se volete gestire il bot tramite [PM2](https://github.com/Unitech/pm2), dopo aver creato il file `.env` eseguite il comando ```pm2 start pm2-ecosystem.config.js```
 
 ## Docker container
-Se volete usare Docker, dopo aver clonato il repository e modificato il `config.json` effettuate una docker build:
+Se volete usare Docker, dopo aver clonato il repository e modificato il `.env` effettuate una docker build:
 
 ```docker build . -t nodeliad```
 

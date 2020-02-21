@@ -12,13 +12,14 @@ Il progetto è nato per via della mancanza di un'app ufficiale per iOS che costr
 ## Features
 * 💰 controllo del credito residuo
 * ⏰ controllo della data di rinnovo
+* 🗓 notifica automatica prima del rinnovo
 * 🇮🇹 controllo dei consumi effettuati in Italia
 * 🌎 controllo dei consumi effettuati all'estero
-* 💶 controllo costi extra in Italia
+* 💶 controllo consumi e costi extra in Italia
 * 💵 controllo consumi e costi extra all'estero
 
 ## Lista dei comandi
-* ```/info```
+* ```/credito```
 * ```/consumi```
 * ```/consumiestero```
 * ```/costiextra```
@@ -28,18 +29,19 @@ Il progetto è nato per via della mancanza di un'app ufficiale per iOS che costr
 1. Clonare il repository con ```git clone https://github.com/Nicuz/Nodeliad.git``` oppure cliccando sul bottone in alto a destra ```Clone or Download```
 2. Entrare nella directory di Nodeliad
 3. Installare le dipendenze con ```npm install```
-4. Rinominare il file ```config.json.template``` in ```config.json```e modificarlo inserendo i propri dati di accesso al sito di Iliad, il token del vostro bot fornito da [BotFather](https://telegram.me/BotFather) e il vostro nickname di Telegram senza la @ iniziale. Il nickname viene utilizzato per fare un controllo sull'utente che invia un comando, il bot fornirà i dettagli sulla linea solo all'utente col nickname specificato.
-5. Avviare il bot con ```node bot.js```
+4. Rinominare il file ```.env.template``` in ```.env```e modificarlo inserendo i propri dati di accesso al sito di Iliad, il token del vostro bot fornito da [BotFather](https://telegram.me/BotFather), il vostro id di Telegram ottenibile con [rawdatabot](https://telegram.me/rawdatabot) e quanti giorni prima del rinnovo volete essere avvisati. L'id viene utilizzato per fare un controllo sull'utente che invia un comando, il bot fornirà i dettagli sulla linea solo all'utente con l'id specificato.
+5. Compilare il bot con ```npm run build```
+6. Avviare il bot con ```node bot.js```
 
 ## Aggiornare il bot
-Questa sezione è pensata per i meno pratici di git che quindi non conoscono tutti i suoi comandi e funzionalità. Ogni volta che una nuova versione del bot viene rilasciata, è possibile scaricare automaticamente i file che sono stati aggiornati entrando nella cartella in cui avete clonato il repo e lanciando il comando ```git pull```. Il file ```config.json``` che avete creato rimarrà al suo posto senza subire cambiamenti e non perderete alcun tipo di configurazione.
+Questa sezione è pensata per i meno pratici di git che quindi non conoscono tutti i suoi comandi e funzionalità. Ogni volta che una nuova versione del bot viene rilasciata, è possibile scaricare automaticamente i file che sono stati aggiornati entrando nella cartella in cui avete clonato il repo e lanciando il comando ```git pull```. Il file ```.env``` che avete creato rimarrà al suo posto senza subire cambiamenti e non perderete alcun tipo di configurazione.
 
 Un metodo semplice ed efficace per aggiornare la lista delle dipendenze nel caso dovessero essere aggiunti o rimossi dei moduli consiste nell'eliminare la cartella ```node_modules``` e lanciare il comando ```npm install```.
 
 Terminato l'aggiornamento vi basterà riavviare il bot.
 
 ## PM2
-Se volete gestire il bot tramite [PM2](https://github.com/Unitech/pm2), dopo aver creato il file `config.json` eseguite il comando ```pm2 start pm2-ecosystem.config.js```
+Se volete gestire il bot tramite [PM2](https://github.com/Unitech/pm2), dopo aver creato il file `.env` eseguite il comando ```pm2 start pm2-ecosystem.config.js```
 
 ## Docker container
 Se volete usare Docker, dopo aver clonato il repository e modificato il `config.json` effettuate una docker build:
@@ -61,7 +63,7 @@ After=network.target
 
 [Service]
 Type=idle
-ExecStart=/path/binario/node /path/nodeliad/bot.js
+ExecStart=/path/binario/node /path/nodeliad/dist/bot.js
 
 [Install]
 WantedBy=multi-user.target

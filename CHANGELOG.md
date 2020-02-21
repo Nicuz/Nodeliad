@@ -1,5 +1,13 @@
 <h1 align="center">Changelog 📖</h1>
 
+## [1.0.0] - 21/02/2020
+### Aggiunto
+* notifica automatica prima del rinnovo
+
+### Cambiato
+* bot completamente riscritto in TypeScript
+* il comando ```/info``` ora è di nuovo ```/credito```, è più sensato ed intuitivo
+
 ## [0.0.3] - 03/07/2018
 ### Aggiunto
 * possibilità di controllare la data di rinnovo dell'offerta

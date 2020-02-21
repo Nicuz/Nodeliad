@@ -2,7 +2,10 @@
 node_modules/
 
 # Config file
-/config.json
+.env
+
+#Ignore build ts files
+dist/**/*
 
 # OS generated files
 .DS_Store

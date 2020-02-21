@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name        : "iliad bot",
-    script      : "./bot.js",
+    script      : "./dist/bot.js",
     watch       : true,
     env: {
       "NODE_ENV": "development",

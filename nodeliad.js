@@ -1,6 +1,6 @@
 const request = require('request');
 const cheerio = require('cheerio');
-const config = require('./config.json');
+const config = process.env.ILIAD_USER || require('./config.json');
 
 var areaRiservata = {
     url: "https://www.iliad.it/account/",
@@ -8,8 +8,8 @@ var areaRiservata = {
     followAllRedirects: true,
     jar: true,
     form: {
-        "login-ident": config.iliad.username,
-        "login-pwd": config.iliad.password
+        "login-ident": process.env.ILIAD_USER || config.iliad.username,
+        "login-pwd": process.env.ILIAD_PASS || config.iliad.password
     }
 };
 
